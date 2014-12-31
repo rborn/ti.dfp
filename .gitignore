@@ -1,0 +1,5 @@
+.DS_Store
+iphone/build
+android/build
+iphone/dfp.xcodeproj/project.xcworkspace/xcuserdata/*
+iphone/dfp.xcodeproj/xcuserdata/*
