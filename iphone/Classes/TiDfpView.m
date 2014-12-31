@@ -254,20 +254,22 @@
 
 - (void)adView:(DFPBannerView *)view willChangeAdSizeTo:(GADAdSize)adSize
 {
-    // Resize container view if nescessary
-    if(autoResize)
-    {
-        NSLog(@"[DEBUG] [TiDfpView] willChangeAdSizeTo %@", NSStringFromCGSize(adSize.size));
-        
-        CGRect frame = self.frame;
-        frame.size = adSize.size;
-        self.frame = frame;
-    }
+    
 }
 
 - (void)adViewDidReceiveAd:(GADBannerView *)view
 {
     NSLog(@"[DEBUG] [TiDfpView] ad_received %@", NSStringFromCGSize(view.frame.size));
+    
+    // Resize container view if nescessary
+    if(autoResize)
+    {
+        NSLog(@"[DEBUG] [TiDfpView] willChangeAdSizeTo %@", NSStringFromCGSize(view.frame.size));
+        
+        CGRect frame = self.frame;
+        frame.size = view.frame.size;
+        self.frame = frame;
+    }
     
     NSDictionary *evt = [NSDictionary dictionaryWithObjectsAndKeys:
                            NUMFLOAT(view.frame.size.width), @"width",
